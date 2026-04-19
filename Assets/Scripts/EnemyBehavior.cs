@@ -19,10 +19,18 @@ public class EnemyBehavior : MonoBehaviour
     {
         IdlePosition = transform.position;
         Player = GameObject.FindWithTag("Player");
+        Debug.Log("Enemy tracking: " + Player.name);
+        
 
         playerHealth = Player.GetComponentInChildren<PlayerHealth>();
-        EnemyManager.Instance.RegisterEnemy(this);
-        
+        if(EnemyManager.Instance != null)
+        {
+            EnemyManager.Instance.RegisterEnemy(this);
+        }
+        else
+        {
+            Debug.Log("EnemyManger.Instance == null");
+        }
     }
 
     // Update is called once per frame

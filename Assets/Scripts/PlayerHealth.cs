@@ -16,6 +16,8 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = maxHealth;
         UpdateHealthUI();
         gameOverScreen.SetActive(false);
+        //Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
