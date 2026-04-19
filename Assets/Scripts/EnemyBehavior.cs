@@ -21,6 +21,7 @@ public class EnemyBehavior : MonoBehaviour
         Player = GameObject.FindWithTag("Player");
 
         playerHealth = Player.GetComponentInChildren<PlayerHealth>();
+        EnemyManager.Instance.RegisterEnemy(this);
         
     }
 
@@ -60,16 +61,10 @@ public class EnemyBehavior : MonoBehaviour
         }
     }
 
-    // private void Attack(Collider other)
-    // {
-    //     if(other.CompareTag("Player") && Time.time >= lastAttackTime + attackCoolDown)
-    //     {
-    //         PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
-    //         if(playerHealth != null)
-    //         {
-    //             playerHealth.TakeDamage(damage);
-    //             lastAttackTime = Time.time;
-    //         }
-    //     }
-    // }
+    public void Die()
+    {
+        Debug.Log("Enemy has died");
+        EnemyManager.Instance.UnregisterEnemy(this);
+        Destroy(gameObject);
+    }
 }
