@@ -10,7 +10,7 @@ public class MenuButtons : MonoBehaviour
     }
     public void PlayButton()
     {
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("Stage0");
     }
 
     public void QuitButton()
