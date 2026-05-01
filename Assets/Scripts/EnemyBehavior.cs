@@ -12,6 +12,7 @@ public class EnemyBehavior : MonoBehaviour
     public float EnemySpeed = 2f;
     public int damage = 10;
     public float attackCoolDown = 1.5f;
+    public int enemyHealth = 100;
     private float attackTimer;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -23,21 +24,26 @@ public class EnemyBehavior : MonoBehaviour
         
 
         playerHealth = Player.GetComponentInChildren<PlayerHealth>();
-        if(EnemyManager.Instance != null)
-        {
-            EnemyManager.Instance.RegisterEnemy(this);
-        }
-        else
-        {
-            Debug.Log("EnemyManger.Instance == null");
-        }
+        // if(EnemyManager.Instance != null)
+        // {
+        //     EnemyManager.Instance.RegisterEnemy(this);
+        // }
+        // else
+        // {
+        //     Debug.Log("EnemyManger.Instance == null");
+        // }
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("EnemyHealth = " + enemyHealth);
         var playerLocation = Player.transform.position;
         PlayerDistance = Vector3.Distance(playerLocation, transform.position);
+        if(enemyHealth <= 0)
+        {
+            Die();
+        }
 
         
         if(PlayerDistance < AttackRange)
@@ -72,7 +78,7 @@ public class EnemyBehavior : MonoBehaviour
     public void Die()
     {
         Debug.Log("Enemy has died");
-        EnemyManager.Instance.UnregisterEnemy(this);
+        //EnemyManager.Instance.UnregisterEnemy(this);
         Destroy(gameObject);
     }
 }

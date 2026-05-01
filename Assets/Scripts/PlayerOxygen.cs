@@ -5,14 +5,15 @@ public class PlayerOxygen : MonoBehaviour
 
     public float maxOxygen = 100f;
     public float currentOxygen;
-    public float oxygenDrainRate = 5f;
+    public float oxygenDrainRate = 2.5f;
     public int healthDrainRate = 10;
     float damageTimer = 0f;
     public float damageInterval = 1f;
-    public PlayerHealth playerHealth;
+    private PlayerHealth playerHealth;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        maxOxygen = GameManager.instance.maxOxygen;
         currentOxygen = maxOxygen;
         playerHealth = GetComponent<PlayerHealth>();
     }
@@ -37,7 +38,7 @@ public class PlayerOxygen : MonoBehaviour
         currentOxygen = Mathf.Clamp(currentOxygen, 0, maxOxygen);
     }
 
-    public void RefillMeter(float amount)
+    public void Refill(float amount)
     {
         currentOxygen += amount;
         currentOxygen = Mathf.Clamp(currentOxygen, 0, maxOxygen);

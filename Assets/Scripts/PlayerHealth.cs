@@ -21,7 +21,7 @@ public class PlayerHealth : MonoBehaviour
     }
 
     // Update is called once per frame
-    void UpdateHealthUI()
+    public void UpdateHealthUI()
     {
         healthText.text = currentHealth + " / " + maxHealth;
         healthSlider.value = (float)currentHealth / maxHealth;
@@ -29,10 +29,6 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
-        // if (isDead)
-        // {
-        //     return;
-        // }
         Debug.Log("Player took damage");
         currentHealth -= amount;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
@@ -45,7 +41,7 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    void Death()
+    public void Death()
     {
         Debug.Log("Player died");
         //isDead = true;

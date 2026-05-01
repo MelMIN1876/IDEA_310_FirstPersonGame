@@ -4,9 +4,11 @@ public class Projectile : MonoBehaviour
 {
     private float timer = 0f;
     private float lifeTime = 5f;
+    public int damage = 25;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        damage = GameManager.instance.projectileDamage;
         var rb = GetComponent<Rigidbody>();
         rb.AddForce(transform.forward * 50f, ForceMode.Impulse);
     }
@@ -25,8 +27,9 @@ public class Projectile : MonoBehaviour
         EnemyBehavior enemy = col.gameObject.GetComponent<EnemyBehavior>();
         if(enemy != null)
         {
-            enemy.Die();
+            enemy.enemyHealth -= damage;
         }
         Destroy(gameObject);
+        
     }
 }
