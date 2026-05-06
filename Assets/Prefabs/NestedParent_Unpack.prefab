@@ -1207,7 +1207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerOxygen
   maxOxygen: 100
   currentOxygen: 100
-  oxygenDrainRate: 5
+  oxygenDrainRate: 2.5
   healthDrainRate: 10
   damageInterval: 1
 --- !u!1 &4057260972172713592
