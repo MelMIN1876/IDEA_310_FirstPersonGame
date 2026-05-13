@@ -36,11 +36,14 @@ public class UpgradePickup : MonoBehaviour
                 break;
             
             case UpgradeType.Health:
-                GameManager.instance.playerHealth += amount;
                 PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
-                playerHealth.maxHealth = GameManager.instance.playerHealth;
-                playerHealth.currentHealth = GameManager.instance.playerHealth;
-                playerHealth.UpdateHealthUI();
+                if(playerHealth.currentHealth < 100){
+                    //GameManager.instance.playerHealth = 100;
+                    //PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
+                    //playerHealth.maxHealth = GameManager.instance.playerHealth;
+                    playerHealth.currentHealth = 100;
+                    playerHealth.UpdateHealthUI();
+                }
                 break;
         }
     }
